@@ -20,6 +20,7 @@ export default function SplashScreen({ navigation }) {
           />
           <Text style={styles.logoText}>ediCare</Text>
         </View>
+        <Text style={styles.tagline}>Your Health, Simplified</Text>
       </View>
     </TouchableOpacity>
   );

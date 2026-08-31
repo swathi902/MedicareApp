@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#DEE5FF',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -17,16 +17,23 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoIcon: {
-    width: 46,
-    height: 46,
-    marginRight: 4,
+    width: 52,
+    height: 52,
+    marginRight: 6,
   },
   logoText: {
-    fontSize: 40,
-    fontWeight: '700',
+    fontSize: 42,
+    fontWeight: '800',
     color: '#0066FF',
-    letterSpacing: -0.5,
+    letterSpacing: -0.8,
     includeFontPadding: false,
     textAlignVertical: 'center',
+  },
+  tagline: {
+    marginTop: 10,
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#4B5563',
+    letterSpacing: 0.2,
   },
 });

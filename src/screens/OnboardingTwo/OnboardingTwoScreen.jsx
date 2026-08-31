@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import MobileStatusBar from '../../components/MobileStatusBar';
 import { styles } from './styles';
 
@@ -14,7 +14,13 @@ export default function OnboardingTwoScreen({ navigation }) {
         </Text>
       </View>
 
-      <View style={styles.imageArea} />
+      <View style={styles.imageArea}>
+        <Image 
+          source={require('../../../assets/Healthcare1.png')} 
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
 
       <View style={styles.card}>
         <Text style={styles.description}>
