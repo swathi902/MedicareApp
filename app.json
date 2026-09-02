@@ -9,13 +9,22 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.anonymous.MediCareApp",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE"
       }
     },
     "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "d4ab20c3-f628-4962-9ea3-9d608a9cd683"
+      }
+    },
     "plugins": [
-      "expo-font"
-    ]
+      "expo-font",
+      "expo-notifications"
+    ],
+    "owner": "swathimathalam"
   }
 }

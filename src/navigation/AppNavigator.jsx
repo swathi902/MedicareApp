@@ -6,10 +6,17 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from '../screens/Splash/SplashScreen';
-import OnboardingOneScreen from '../screens/OnboardingOne/OnboardingOneScreen';
-import OnboardingTwoScreen from '../screens/OnboardingTwo/OnboardingTwoScreen';
+
+import {
+  OnboardingOneScreen,
+  OnboardingTwoScreen,
+} from '../screens/OnboardingScreens/OnboardingScreens';
+
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
+import HomeScreen from '../screens/Home/HomeScreen';
+import SearchScreen from '../screens/Search/SearchScreen'; 
+import ProfileScreen from '../screens/Profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +30,9 @@ export default function AppNavigator() {
     { key: 'OnboardingTwo', label: 'Intro 2' },
     { key: 'SignUp', label: 'Sign Up' },
     { key: 'Login', label: 'Login' },
+    { key: 'Home', label: 'Home' },
+    { key: 'Search', label: 'Search' },
+    { key: 'Profile', label: 'Profile' },
   ];
 
   return (
@@ -49,6 +59,9 @@ export default function AppNavigator() {
           <Stack.Screen name="OnboardingTwo" component={OnboardingTwoScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
 
@@ -80,8 +93,8 @@ export default function AppNavigator() {
 const styles = StyleSheet.create({
   wrapper: { flex: 1, position: 'relative' },
   floatingSwitcher: { position: 'absolute', bottom: 24, alignSelf: 'center', flexDirection: 'row', backgroundColor: 'rgba(15, 23, 42, 0.85)', borderRadius: 20, padding: 4, zIndex: 9999, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.25, shadowRadius: 6, elevation: 8 },
-  switchBtn: { paddingHorizontal: 9, paddingVertical: 5, borderRadius: 14 },
+  switchBtn: { paddingHorizontal: 7, paddingVertical: 5, borderRadius: 14 },
   switchBtnActive: { backgroundColor: '#0066FE' },
-  switchBtnText: { color: '#94A3B8', fontSize: 11, fontWeight: '700' },
+  switchBtnText: { color: '#94A3B8', fontSize: 10, fontWeight: '700' },
   switchBtnTextActive: { color: '#FFFFFF' },
 });

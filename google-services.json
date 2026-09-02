@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "71820359711",
+    "project_id": "medicareapp-bbec9",
+    "storage_bucket": "medicareapp-bbec9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71820359711:android:affc6346f74d35b3b7fd2a",
+        "android_client_info": {
+          "package_name": "com.anonymous.MediCareApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEVuYoG29q1nb6ocVb_YxbUxYnSDO3G8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
