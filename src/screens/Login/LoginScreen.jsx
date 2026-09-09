@@ -45,6 +45,11 @@ export default function LoginScreen({ navigation }) {
     setShowPopup(true);
   };
 
+  // Forgot Password
+  const handleForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
+  };
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -101,6 +106,17 @@ export default function LoginScreen({ navigation }) {
               setShowPassword(prev => !prev)
             }
           />
+
+          {/* Forgot Password */}
+          <TouchableOpacity
+            style={styles.forgotBtn}
+            onPress={handleForgotPassword}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.forgotText}>
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
 
           {/* Login Button */}
           <TouchableOpacity
@@ -201,11 +217,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     zIndex: 10,
     elevation: 10,
+
     shadowColor: colors.black,
+
     shadowOffset: {
       width: 0,
       height: 2,
     },
+
     shadowOpacity: 0.2,
     shadowRadius: 4,
   },
@@ -221,6 +240,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  // =========================
+  // Forgot Password
+  // =========================
+
+  forgotBtn: {
+    alignSelf: 'flex-end',
+    marginTop: -4,
+    marginBottom: 15,
+  },
+
+  forgotText: {
+    color: colors.primary,
+    fontSize: 13.5,
+    fontWeight: '700',
+  },
+
+  // =========================
+  // Login Button
+  // =========================
+
   primaryBtn: {
     backgroundColor: colors.primary,
     height: 54,
@@ -231,10 +270,12 @@ const styles = StyleSheet.create({
     marginBottom: 24,
 
     shadowColor: colors.primary,
+
     shadowOffset: {
       width: 0,
       height: 4,
     },
+
     shadowOpacity: 0.25,
     shadowRadius: 8,
 
@@ -246,6 +287,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
+
+  // =========================
+  // Sign Up
+  // =========================
 
   footerRow: {
     flexDirection: 'row',
@@ -290,10 +335,12 @@ const styles = StyleSheet.create({
     elevation: 8,
 
     shadowColor: colors.black,
+
     shadowOffset: {
       width: 0,
       height: 4,
     },
+
     shadowOpacity: 0.25,
     shadowRadius: 8,
   },
@@ -331,3 +378,4 @@ const styles = StyleSheet.create({
   },
 
 });
+

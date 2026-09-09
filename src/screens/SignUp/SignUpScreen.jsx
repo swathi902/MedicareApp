@@ -29,7 +29,11 @@ export default function SignUpScreen({ navigation }) {
   const [popupMessage, setPopupMessage] = useState('');
   const [popupType, setPopupType] = useState('');
 
-  const showCustomPopup = (title, message, type = 'info') => {
+  const showCustomPopup = (
+    title,
+    message,
+    type = 'info'
+  ) => {
     setPopupTitle(title);
     setPopupMessage(message);
     setPopupType(type);
@@ -37,7 +41,11 @@ export default function SignUpScreen({ navigation }) {
   };
 
   const onSubmit = () => {
-    if (!name.trim() || !email.trim() || !password.trim()) {
+    if (
+      !name.trim() ||
+      !email.trim() ||
+      !password.trim()
+    ) {
       showCustomPopup(
         'Missing Info',
         'Please fill in all fields.',
@@ -61,18 +69,14 @@ export default function SignUpScreen({ navigation }) {
     }
   };
 
-  const handleForgotPassword = () => {
-    showCustomPopup(
-      'Reset Password',
-      'Password reset email sent.',
-      'info'
-    );
-  };
-
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      behavior={
+        Platform.OS === 'ios'
+          ? 'padding'
+          : undefined
+      }
     >
       <MobileStatusBar />
 
@@ -81,14 +85,16 @@ export default function SignUpScreen({ navigation }) {
         contentContainerStyle={styles.scrollContent}
         bounces={false}
       >
-        <AuthHeader title={'Sign Up for a Smarter,\nHealthier You'} />
+        <AuthHeader
+          title={'Sign Up for a Smarter,\nHealthier You'}
+        />
 
         {/* Round Profile Image */}
         <View style={styles.imageContainer}>
           <Image
             source={require('../../../assets/Doctor2.jpg')}
             style={styles.headerImage}
-            resizeMode="contain" 
+            resizeMode="contain"
           />
         </View>
 
@@ -110,7 +116,7 @@ export default function SignUpScreen({ navigation }) {
             onChangeText={setEmail}
             keyboardType="email-address"
           />
-          
+
           {/* Password */}
           <InputField
             icon="lock-closed"
@@ -118,21 +124,17 @@ export default function SignUpScreen({ navigation }) {
             value={password}
             onChangeText={setPassword}
             secureTextEntry={!showPassword}
-            rightIcon={showPassword ? 'eye-off' : 'eye'}
-            onRightIconPress={() => setShowPassword(prev => !prev)}
+            rightIcon={
+              showPassword
+                ? 'eye-off'
+                : 'eye'
+            }
+            onRightIconPress={() =>
+              setShowPassword(
+                prev => !prev
+              )
+            }
           />
-          
-
-          {/* Forgot Password */}
-          <TouchableOpacity
-            style={styles.forgotBtn}
-            onPress={handleForgotPassword}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.forgotText}>
-              Forgot Password?
-            </Text>
-          </TouchableOpacity>
 
           {/* Get Started */}
           <TouchableOpacity
@@ -152,7 +154,9 @@ export default function SignUpScreen({ navigation }) {
             </Text>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('Login')}
+              onPress={() =>
+                navigation.navigate('Login')
+              }
             >
               <Text style={styles.footerLink}>
                 Sign In
@@ -167,7 +171,9 @@ export default function SignUpScreen({ navigation }) {
         visible={showPopup}
         transparent={true}
         animationType="fade"
-        onRequestClose={() => setShowPopup(false)}
+        onRequestClose={() =>
+          setShowPopup(false)
+        }
       >
         <View style={styles.popupOverlay}>
           <View style={styles.popupContainer}>
@@ -240,7 +246,7 @@ const styles = StyleSheet.create({
     marginTop: -47.5,
     borderWidth: 3,
     borderColor: '#FFFFFF',
-    backgroundColor: '#FFFFFF', // Image chuttu white space unte circle background tho merge avuthundi
+    backgroundColor: '#FFFFFF',
     zIndex: 10,
     elevation: 10,
     shadowColor: '#000',
@@ -260,18 +266,6 @@ const styles = StyleSheet.create({
   form: {
     marginTop: 15,
     paddingHorizontal: 22,
-  },
-
-  forgotBtn: {
-    alignSelf: 'flex-end',
-    marginBottom: 15,
-    marginTop: -4,
-  },
-
-  forgotText: {
-    color: '#0066FE',
-    fontSize: 13.5,
-    fontWeight: '700',
   },
 
   primaryBtn: {
@@ -383,7 +377,7 @@ const styles = StyleSheet.create({
 
   popupMessage: {
     fontSize: 15.5,
-    fontWeight: '500', // Fixed syntax error here
+    fontWeight: '500',
     color: '#64748B',
     lineHeight: 23,
     textAlign: 'center',
@@ -405,3 +399,4 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+

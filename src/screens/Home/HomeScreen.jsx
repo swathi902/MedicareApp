@@ -5,15 +5,17 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  TextInput,
   StyleSheet,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import MobileStatusBar from '../../components/MobileStatusBar';
+import BottomNavigation from '../../components/BottomNavigation';
+import SearchBar from '../../components/SearchBar';
 import colors from '../../constants/colors';
 
 export default function HomeScreen({ navigation }) {
   const [selectedDay, setSelectedDay] = useState(15);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const daysList = [
     { day: 'Mon', date: 11 },
@@ -87,7 +89,7 @@ export default function HomeScreen({ navigation }) {
           <View style={styles.calendarHeaderRow}>
             <Text style={styles.availabilityLabel}>Availability</Text>
             <View style={styles.monthSelector}>
-              <Text style={styles.monthText}>January 2026</Text>
+              <Text style={styles.monthText}>September 2026</Text>
               <Ionicons name="chevron-forward" size={13} color="#E2E8F0" />
             </View>
           </View>
@@ -111,18 +113,12 @@ export default function HomeScreen({ navigation }) {
           </ScrollView>
         </View>
 
-        {/* Search Bar */}
-        <View style={styles.searchBarContainer}>
-          <Ionicons name="search" size={18} color={colors.placeholder} style={styles.searchIcon} />
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor={colors.placeholder}
-            style={styles.searchInput}
-          />
-          <TouchableOpacity activeOpacity={0.7}>
-            <Ionicons name="options-outline" size={18} color={colors.textSecondary} />
-          </TouchableOpacity>
-        </View>
+        {/* Reusable Search Bar Component */}
+        <SearchBar
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          placeholder="Search"
+        />
 
         {/* Available Doctors Section */}
         <View style={styles.sectionHeaderRow}>
@@ -184,20 +180,11 @@ export default function HomeScreen({ navigation }) {
         <View style={{ height: 110 }} />
       </ScrollView>
 
-      {/* Floating Bottom Navigation Bar */}
-      <View style={styles.bottomNavContainer}>
-        <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navIconActive} activeOpacity={0.8} onPress={() => navigation.navigate('Home')}>
-            <Ionicons name="home" size={20} color={colors.white} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navIconInactive} activeOpacity={0.8} onPress={() => navigation.navigate('Search')}>
-            <Ionicons name="search" size={20} color={colors.placeholder} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navIconInactive} activeOpacity={0.8} onPress={() => navigation.navigate('Profile')}>
-            <Ionicons name="person" size={20} color={colors.placeholder} />
-          </TouchableOpacity>
-        </View>
-      </View>
+      {/* Reusable Bottom Navigation Component */}
+      <BottomNavigation
+        navigation={navigation}
+        activeScreen="Home"
+      />
     </View>
   );
 }
@@ -209,7 +196,8 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 20,
-    paddingTop: 15,
+    paddingTop: 50, 
+    paddingBottom: 40,
   },
   profileHeader: {
     flexDirection: 'row',
@@ -228,6 +216,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     borderWidth: 2,
     borderColor: colors.white,
+    backgroundColor: colors.primary,
   },
   userTextContainer: {
     marginLeft: 12,
@@ -399,25 +388,6 @@ const styles = StyleSheet.create({
   selectedText: {
     color: colors.primary,
   },
-  searchBarContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    height: 48,
-    borderRadius: 24,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: colors.border,
-    marginBottom: 20,
-  },
-  searchIcon: {
-    marginRight: 8,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 14,
-    color: colors.text,
-  },
   sectionHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -529,42 +499,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.textSecondary,
     fontWeight: '600',
-  },
-  bottomNavContainer: {
-    position: 'absolute',
-    bottom: 75, 
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-  },
-  bottomNav: {
-    backgroundColor: '#1E293B',
-    flexDirection: 'row',
-    borderRadius: 35,
-    paddingHorizontal: 6,
-    paddingVertical: 6,
-    alignItems: 'center',
-    shadowColor: colors.black,
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.35,
-    shadowRadius: 10,
-    elevation: 10,
-  },
-  navIconActive: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 4,
-  },
-  navIconInactive: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 4,
   },
 });
