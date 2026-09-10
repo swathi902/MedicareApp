@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import {
   NavigationContainer,
   useNavigationContainerRef,
@@ -18,6 +18,9 @@ import ForgotPasswordScreen from '../screens/ForgotPassword/ForgotPasswordScreen
 import HomeScreen from '../screens/Home/HomeScreen';
 import SearchScreen from '../screens/Search/SearchScreen'; 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
+import CalendarScreen from '../screens/Calendar/CalendarScreen';
+
+import BottomNavigation from '../components/BottomNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,21 +28,15 @@ export default function AppNavigator() {
   const navRef = useNavigationContainerRef();
   const [currentScreen, setCurrentScreen] = useState('Splash');
 
-  const screens = [
-    { key: 'Splash', label: 'Splash' },
-    { key: 'OnboardingOne', label: 'Intro 1' },
-    { key: 'OnboardingTwo', label: 'Intro 2' },
-    { key: 'SignUp', label: 'Sign Up' },
-    { key: 'Login', label: 'Login' },
-  ];
+  const mainTabs = ['Home', 'Search', 'Calendar', 'Profile'];
+  const showBottomNav = mainTabs.includes(currentScreen);
 
   return (
-    <View style={styles.wrapper}>
+    <View style={{ flex: 1 }}>
       <NavigationContainer
         ref={navRef}
         onStateChange={() => {
           const name = navRef.getCurrentRoute()?.name;
-
           if (name) {
             setCurrentScreen(name);
           }
@@ -60,57 +57,15 @@ export default function AppNavigator() {
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Calendar" component={CalendarScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
 
-      <View style={styles.floatingSwitcher}>
-        {screens.map((item) => (
-          <TouchableOpacity
-            key={item.key}
-            style={[
-              styles.switchBtn,
-              currentScreen === item.key && styles.switchBtnActive,
-            ]}
-            onPress={() => navRef.navigate(item.key)}
-          >
-            <Text
-              style={[
-                styles.switchBtnText,
-                currentScreen === item.key && styles.switchBtnTextActive,
-              ]}
-            >
-              {item.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      {/* Renders your custom bottom bar only on main screens */}
+      {showBottomNav && (
+        <BottomNavigation navigation={navRef} activeTab={currentScreen} />
+      )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: { flex: 1, position: 'relative' },
-  floatingSwitcher: { 
-    position: 'absolute', 
-    bottom: 24, 
-    alignSelf: 'center', 
-    flexDirection: 'row', 
-    backgroundColor: 'rgba(15, 23, 42, 0.85)', 
-    borderRadius: 20, 
-    padding: 4, 
-    zIndex: 9999, 
-    shadowColor: '#000', 
-    shadowOffset: { width: 0, height: 4 }, 
-    shadowOpacity: 0.25, 
-    shadowRadius: 6, 
-    elevation: 8,
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    maxWidth: '95%'
-  },
-  switchBtn: { paddingHorizontal: 6, paddingVertical: 5, borderRadius: 14, margin: 1 },
-  switchBtnActive: { backgroundColor: '#0066FE' },
-  switchBtnText: { color: '#94A3B8', fontSize: 9, fontWeight: '700' },
-  switchBtnTextActive: { color: '#FFFFFF' },
-});
