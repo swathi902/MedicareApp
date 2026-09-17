@@ -8,7 +8,7 @@ import Animated, {
   Easing 
 } from 'react-native-reanimated';
 import colors from '../constants/colors';
-
+ 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 // Individual Animated Tab Component for smooth transitions
@@ -20,7 +20,7 @@ function AnimatedTab({ tab, isActive, onPress }) {
 
   useEffect(() => {
     const config = {
-      duration: 100,
+      duration: 100,  
       easing: Easing.bezier(0.25, 1, 0.5, 1),
     };
 
@@ -52,7 +52,7 @@ function AnimatedTab({ tab, isActive, onPress }) {
       <Animated.View
         style={[
           styles.tab,
-          isActive ? styles.activeTab : styles.inactiveTab,
+          isActive ?  styles.activeTab : styles.inactiveTab,
           animatedStyle,
         ]}
       >
@@ -79,7 +79,7 @@ export default function BottomNavigation({ navigation, activeTab = 'Home' }) {
       name: 'Home',
       icon: 'home-outline',
       activeIcon: 'home',
-    },
+    }, 
     {
       name: 'Search',
       icon: 'search-outline',

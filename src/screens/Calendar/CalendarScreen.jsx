@@ -37,6 +37,7 @@ export default function CalendarScreen({ navigation }) {
 
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+
   // Appointments Database State (Key format: "YYYY-MM-DD")
   const [appointmentsData, setAppointmentsData] = useState({
     '2026-09-15': [

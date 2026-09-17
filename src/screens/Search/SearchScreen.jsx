@@ -4,7 +4,7 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-} from 'react-native';
+} from 'react-native';     
 
 import MobileStatusBar from '../../components/MobileStatusBar';
 import ScreenHeader from '../../components/ScreenHeader';

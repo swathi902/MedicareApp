@@ -60,8 +60,8 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.featuredCard}>
           <View style={styles.cardTopRow}>
             <View>
-              <Text style={styles.specialtyLabel}>Neurologist</Text>
-              <Text style={styles.doctorName}>Dr. Jessica</Text>
+              <Text style={styles.specialtyLabel}>Cardiologist</Text>
+              <Text style={styles.doctorName}>Dr. Mia Collins</Text>
               <View style={styles.ratingRow}>
                 <Ionicons name="star" size={14} color={colors.warning} />
                 <Text style={styles.ratingText}> 4.9 <Text style={styles.reviewsText}>(3,988)</Text></Text>
@@ -71,7 +71,7 @@ export default function HomeScreen({ navigation }) {
 
             <View style={styles.doctorImageWrapper}>
               <Image
-                source={require('../../../assets/Doctor2.jpg')}
+                source={require('../../../assets/Doctor1.jpg')}
                 style={styles.doctorCardImage}
                 resizeMode="cover"
               />
@@ -81,7 +81,11 @@ export default function HomeScreen({ navigation }) {
             </View>
           </View>
 
-          <TouchableOpacity style={styles.consultBtn} activeOpacity={0.85}>
+          <TouchableOpacity
+            style={styles.consultBtn}
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('ScheduleScreen')}
+          >
             <Text style={styles.consultBtnText}>Consult Now</Text>
           </TouchableOpacity>
 
@@ -123,7 +127,10 @@ export default function HomeScreen({ navigation }) {
         {/* Available Doctors Section */}
         <View style={styles.sectionHeaderRow}>
           <Text style={styles.sectionTitle}>Available Doctors</Text>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('HealthSummaryScreen')}
+          >
             <Text style={styles.seeAllText}>See All</Text>
           </TouchableOpacity>
         </View>
@@ -162,7 +169,7 @@ export default function HomeScreen({ navigation }) {
                 resizeMode="cover"
               />
               <View style={{ marginLeft: 10 }}>
-                <Text style={styles.scheduleDocName}>Dr. Jessica</Text>
+                <Text style={styles.scheduleDocName}>Mia Collains</Text>
                 <Text style={styles.scheduleDocSpec}>Neurologist</Text>
               </View>
             </View>
@@ -196,7 +203,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 20,
-    paddingTop: 50, 
+    paddingTop: 50,
     paddingBottom: 40,
   },
   profileHeader: {

@@ -49,7 +49,7 @@ export default function LoginScreen({ navigation }) {
   const handleForgotPassword = () => {
     navigation.navigate('ForgotPassword');
   };
-
+  
   return (
     <KeyboardAvoidingView
       style={styles.container}

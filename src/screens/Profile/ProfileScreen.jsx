@@ -17,7 +17,7 @@ import colors from '../../constants/colors';
 export default function ProfileScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
 
-  // CustomModal లోని config prop కి సరిగ్గా మ్యాచ్ అయ్యేలా ఆబ్జెక్ట్
+
   const [modalConfig, setModalConfig] = useState({
     title: '',
     message: '',

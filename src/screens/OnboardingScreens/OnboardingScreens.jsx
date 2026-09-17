@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
+  Image,            
   StyleSheet,
 } from 'react-native';
 
@@ -16,7 +16,7 @@ import MobileStatusBar from '../../components/MobileStatusBar';
 const OnboardingLayout = ({
   navigation,
   title,
-  description,
+  description, 
   image,
   buttonText,
   nextScreen,
